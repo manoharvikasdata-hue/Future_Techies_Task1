@@ -244,3 +244,63 @@ button:hover{
         transform:translateY(0);
     }
 }
+/* ===============================
+   CERTIFICATIONS SECTION
+================================*/
+
+.certifications{
+    margin-top:140px;
+    text-align:center;
+}
+
+.section-title{
+    font-size:2.5rem;
+    margin-bottom:50px;
+    animation:glow 2s infinite alternate;
+}
+
+.cert-container{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* Certification Cards */
+.cert-card{
+    width:260px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    transition:0.5s;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Hover lift */
+.cert-card:hover{
+    transform:translateY(-15px) scale(1.05);
+    box-shadow:0 0 25px #00f7ff;
+}
+
+/* Neon border animation */
+.cert-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    padding:2px;
+    background:linear-gradient(45deg,#00f7ff,#ff00ff,#00f7ff);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity:0;
+    transition:0.4s;
+}
+
+.cert-card:hover::before{
+    opacity:1;
+}
