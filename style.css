@@ -1,0 +1,246 @@
+/* ===============================
+   RESET
+================================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0a0f2c;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===============================
+   ANIMATED GRADIENT BACKGROUND
+================================*/
+.bg-animation{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(270deg,#020024,#090979,#00d4ff);
+    background-size:600% 600%;
+    animation:bgMove 15s infinite;
+    z-index:-2;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* Floating bubbles */
+body::before, body::after{
+    content:"";
+    position:fixed;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    background:rgba(0,247,255,0.15);
+    animation:bubble 8s infinite ease-in-out;
+    z-index:-1;
+}
+
+body::before{ left:10%; top:70%; }
+body::after{ right:10%; top:20%; animation-delay:4s; }
+
+@keyframes bubble{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-60px); }
+    100%{ transform:translateY(0px); }
+}
+
+/* ===============================
+   NAVBAR
+================================*/
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 60px;
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.logo:hover{
+    color:#00f7ff;
+    text-shadow:0 0 15px #00f7ff, 0 0 30px #00f7ff;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav li{
+    cursor:pointer;
+    position:relative;
+    padding-bottom:5px;
+}
+
+/* Navbar underline animation */
+nav li::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0%;
+    height:2px;
+    background:#00f7ff;
+    transition:0.4s;
+}
+
+nav li:hover::after{ width:100%; }
+
+/* ===============================
+   HERO SECTION
+================================*/
+.hero{
+    text-align:center;
+    margin-top:140px;
+}
+
+.hero h2{
+    font-size:3rem;
+    animation:glow 2s infinite alternate;
+}
+
+/* Glow animation */
+@keyframes glow{
+    from{ text-shadow:0 0 10px #00f7ff; }
+    to{ text-shadow:0 0 25px #00f7ff; }
+}
+
+/* Gradient hover text */
+.hero h2:hover{
+    background:linear-gradient(90deg,#00f7ff,#ff00ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    cursor:pointer;
+}
+
+.hero p{
+    margin-top:10px;
+    opacity:0.8;
+}
+
+/* ===============================
+   BUTTON RIPPLE + FLOAT
+================================*/
+button{
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#00f7ff;
+    font-weight:bold;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:0.4s;
+    animation:float 3s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-10px); }
+    100%{ transform:translateY(0px); }
+}
+
+/* Ripple effect */
+button::before{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+    background:white;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    opacity:0.3;
+    transition:0.6s;
+}
+
+button:hover::before{
+    width:300px;
+    height:300px;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+/* ===============================
+   FEATURE CARDS
+================================*/
+.features{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:120px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:250px;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+    transition:0.5s;
+    animation:fadeUp 1.5s ease forwards;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Card lift */
+.card:hover{
+    transform:translateY(-20px) scale(1.05);
+    box-shadow:0 0 25px #00f7ff;
+}
+
+/* Card shine sweep */
+.card::before{
+    content:"";
+    position:absolute;
+    top:-100%;
+    left:-100%;
+    width:200%;
+    height:200%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transform:rotate(25deg);
+    transition:0.7s;
+}
+
+.card:hover::before{
+    top:100%;
+    left:100%;
+}
+
+/* Fade up animation */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
